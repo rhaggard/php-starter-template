@@ -1,0 +1,39 @@
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="myModalLabel">Enter your credentials</h3>
+		  </div>
+		  <div class="modal-body span12">
+	    
+		    <form method="POST" action="update">
+		    <div class="span5">
+			  <legend>Cart Capability</legend>
+			  <label>Authentication Token</label>
+			  <input type="text" name="cart_token" placeholder="Bearer EmD5+rI5JWO0w4DEev8+HQMYOszwD6M8FoXG9J/50GBSE8LDeOCjOFqf4XwGKHmfS+y13vd4">
+			  <label>Topic</label>
+			  <input type="text" name="cart_topic" placeholder="com.x.example.v1/OrderFulfillment/OrderCreated">
+			  <label>Schema URI</label>
+			  <input type="text" name="cart_uri" placeholder="http://api.x.com/ocl/com.x.example.v1/OrderFulfillment/OrderCreated/1.2.0/">
+			  <label>Schema version</label>
+			  <input type="text" name="cart_ver" placeholder="1.2.0">
+			  <br/>
+			 </div>
+			 <div class="span5 offset1">
+			  <legend>Shipping Capability</legend>
+			  <label>Authentication Token</label>
+			  <input type="text" name="ship_token" placeholder="Bearer DTnGqOEPTffZyQ/byw/IwTedDIhtL+m3P+EsCI4br/dtNc5njBCx217Imh3QPGyBH2cFa5XE">
+			  <label>Topic</label>
+			  <input type="text" name="ship_topic" placeholder="com.x.example.v1/OrderShipment/ShipOrderSucceeded">
+			  <label>Schema URI</label>
+			  <input type="text" name="ship_uri" placeholder="http://api.x.com/ocl/com.x.example.v1/OrderShipment/ShipOrderSucceeded/1.2.0/">
+			  <label>Schema version</label>
+			  <input type="text" name="ship_ver" placeholder="1.2.0">
+			</div>
+			  
+		  </div>
+		  <div class="modal-footer">
+		    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		    <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		  </div>
+		</div>

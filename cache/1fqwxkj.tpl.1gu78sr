@@ -1,0 +1,16 @@
+a:3:{i:0;d:1346339657.565042972564697265625;i:1;i:0;i:2;s:429:"<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Powered by <?php echo  ($_VERSION=$this->get('VERSION')) ; ?></title>
+	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="hero-unit">
+		<div class="container">
+			<h1>X.commerce PHP Sample</h1>
+		</div>
+	</div>
+</body>
+</html>
+";}
