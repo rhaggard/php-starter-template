@@ -33,6 +33,13 @@ F3::route('GET /',
 	}
 );
 
+F3::route('GET /test',
+	function() {
+		echo "Hello world";
+	}
+
+);
+
 F3::route('GET /form',
 	function() {
 		echo Template::serve('form.html');
@@ -41,8 +48,8 @@ F3::route('GET /form',
 
 F3::route('POST /cart_to_shipper',
 	function() {
-
-		$json_schema = file_get_contents(F3::get('cart_uri'));
+		
+		$json_schema = Web::http('GET '.F3::get('cart_uri'));
 		$avro_schema  = AvroSchema::parse($json_schema);
 		$datum_writer = new AvroIODatumWriter($avro_schema);
 		$write_io     = new AvroStringIO();
@@ -126,7 +133,7 @@ F3::route('POST /shipper_bridge',
 
 F3::route('POST /shipper_to_cart',
 	function() {
-		$json_schema = file_get_contents(F3::get('ship_uri'));
+		$json_schema = Web::http('GET '.F3::get('ship_uri'));
 		$avro_schema  = AvroSchema::parse($json_schema);
 		$datum_writer = new AvroIODatumWriter($avro_schema);
 		$write_io     = new AvroStringIO();
