@@ -1,9 +1,9 @@
 What is this?
 ===
 
-A PHP bundle based on the wonderful F3 (Fat-free-framework) that implements a sample X.commerce use case - https://www.x.com/developers/x.commerce/documentation-tools/how-to-guides/x.commerce-messaging-basics-page-4
+A PHP starter template based on the wonderful F3 (Fat-free-framework) that implements a sample X.commerce use case - https://www.x.com/developers/x.commerce/documentation-tools/how-to-guides/x.commerce-messaging-basics-page-4
 
-This bundle is cloud deployment ready. 
+This code is cloud deployment ready. 
 As an example look at http://xphp.phpfogapp.com
 
 How
