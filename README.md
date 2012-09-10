@@ -10,7 +10,7 @@ How
 ====
 Clone this repo and dump the folder into your localhost/webroot directory. Update the .htaccess file and change the following line
 	
-	RewriteBase /php_xcommerce
+	RewriteBase /php_starter_template
 
 to where ever your sub folder resides. This is a requirement for F3 to work.
 
