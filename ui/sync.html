@@ -1,0 +1,12 @@
+<div id="content"></div>
+
+<script id="mainTmpl" type="text/html">
+    <span>${message}</span>
+</script>
+
+<script type="text/javascript">
+  var data = {
+    message: "hello world"
+  };
+  $("#mainTmpl").tmpl(data).appendTo("#content");
+</script>

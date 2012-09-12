@@ -47,24 +47,14 @@
 			  <legend>Cart Capability</legend>
 			  <label>Authentication Token</label>
 			  <input type="text" name="cart_token" placeholder="Bearer EmD5+rI5JWO0w4DEev8+HQMYOszwD6M8FoXG9J/50GBSE8LDeOCjOFqf4XwGKHmfS+y13vd4">
-			  <label>Topic</label>
-			  <input type="text" name="cart_topic" placeholder="com.x.example.v1/OrderFulfillment/OrderCreated">
-			  <label>Schema URI</label>
-			  <input type="text" name="cart_uri" placeholder="http://api.x.com/ocl/com.x.example.v1/OrderFulfillment/OrderCreated/1.2.0/">
-			  <label>Schema version</label>
-			  <input type="text" name="cart_ver" placeholder="1.2.0">
+			  
 			  <br/>
 			 </div>
 			 <div class="span5 offset1">
 			  <legend>Shipping Capability</legend>
 			  <label>Authentication Token</label>
 			  <input type="text" name="ship_token" placeholder="Bearer DTnGqOEPTffZyQ/byw/IwTedDIhtL+m3P+EsCI4br/dtNc5njBCx217Imh3QPGyBH2cFa5XE">
-			  <label>Topic</label>
-			  <input type="text" name="ship_topic" placeholder="com.x.example.v1/OrderShipment/ShipOrderSucceeded">
-			  <label>Schema URI</label>
-			  <input type="text" name="ship_uri" placeholder="http://api.x.com/ocl/com.x.example.v1/OrderShipment/ShipOrderSucceeded/1.2.0/">
-			  <label>Schema version</label>
-			  <input type="text" name="ship_ver" placeholder="1.2.0">
+			  
 			</div>
 			  
 		  </div>
@@ -77,7 +67,7 @@
 		<div class="modal" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 			<form>
 			<div id="step1" style="">
-				<legend>1. Cart sends the order to shipper</legend>
+				<legend>1. Cart creates order</legend>
 				<h4>Schema uri</h4> <label> {{ @cart_uri }}</label>
 				<label> My auth token = {{ @cart_token }}</label>
 			  	<h4>Message</h4>
@@ -97,18 +87,28 @@
 			</div>
 
 			<div id="step2" style="display:none">
-				<legend>2. Shipper retrieves order from bridge</legend>
-				<label> Bridge url = {{ @sync_bridge_url }} </label>
-				<label> My auth token = {{ @ship_token }}</label>
-			  	<pre id="pre2">
+				<legend>2. Cart sends order to shipper</legend>
+				<h4>Schema uri</h4> <label> {{ @ship_order_uri }}</label>
+				<label> My auth token = {{ @ship_order_token }}</label>
+			  	<h4>Message</h4>
+			  	<textarea style="width: 75%; background: #fbfbfb;" rows="10" id="ta2">
+				 {
+				 
+				    "orderID" : "123456",
+				    "shippingService" : "FedEx",
+				    "estimatedWeight" : 1.0
+				  
+				}
+				</textarea>
+				<pre id="pre2">
 				</pre>
-			  	<br/>
-				<a class="btn btn-primary" id="btn2">Get message</a>
+				<br/>
+				<a class="btn btn-primary" id="btn2">Send</a>
 				<a class="btn btn-primary" id="step3_nav" style="display:none;">Go to Step 3</a>
 			</div>
 
 			<div id="step3" style="display:none">
-				<legend>3. Shipper sends tracking number to cart</legend>
+				<legend>3. Shipper sends order succeeded and tracking number </legend>
 				<h4>Schema uri</h4> <label> {{ @ship_uri }}</label>
 				<label> My auth token = {{ @ship_token }}</label>
 			  	<h4>Message</h4>
@@ -122,17 +122,10 @@
 				</textarea>
 				<pre id="pre3"></pre>
 				<a class="btn btn-primary" id="btn3">Send</a>
-				<a class="btn btn-primary" id="step4_nav" style="display:none;">Go to Step 4</a>
+				<a class="btn btn-primary" id="donebutton" style="display:none;">Done</a>
 			</div>
 
-			<div id="step4" style="display:none">
-				<legend>4. Cart retrieves tracking number from bridge</legend>
-				<h4>Schema uri</h4> 
-				<label> My auth token = {{ @cart_token }}</label>
-			  	<pre id="pre4"></pre>
-				<a class="btn btn-primary" id="btn4">Get message</a>
-				<button class="btn btn-primary" id="donebutton" style="display:none;">Done</button>
-			</div>
+			
 		</form>
 		</div>
       </div>
