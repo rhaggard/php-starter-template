@@ -21,7 +21,7 @@ $('a#step2_nav').click(function(e){
 $('a#btn2').click(function(e){
 	//cart sends message to shipper
 
-	$.post('shipper_bridge', {}, 
+	$.post('shipper_order', {"json_message" : $('#ta2').text()}, 
 		function(data) {
   			$('#pre2').html(data);
   			$('#step3_nav').show();
@@ -40,29 +40,13 @@ $('a#btn3').click(function(e){
 	$.post('shipper_to_cart', {"json_message" : $('#ta3').text()}, 
 		function(data) {
   			$('#pre3').html(data);
-  			$('#step4_nav').show();
-  			$('#btn2').hide();
-		}
-	);
-	e.preventDefault();
-});
-$('a#step4_nav').click(function(e){
-	$('#step3').hide();
-	$('#step4').show();
-});
-
-$('a#btn4').click(function(e){
-	//cart sends message to shipper
-
-	$.post('cart_bridge', {}, 
-		function(data) {
-  			$('#pre4').html(data);
   			$('#donebutton').show();
   			$('#btn3').hide();
 		}
 	);
 	e.preventDefault();
 });
+
 $('a#donebutton').click(function(e){
 	
 });
