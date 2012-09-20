@@ -145,7 +145,7 @@ F3::route('POST /shipper_order',
 		  $d = $_POST['json_message'];
 		}
 		$message = json_decode($d, true);
-		error_log(print_r($message,true));
+		//error_log(print_r($message,true));
 		//$message = array("order" => array("orderID" => "123", "orderType" => "InHouse"));
 		$datum_writer->write($message, $encoder);
 
@@ -252,7 +252,7 @@ F3::route('POST /update',
 
 		if(!empty($_POST["cart_token"])){
 			F3::set('SESSION.cart_token',$_POST["cart_token"]);
-			error_log(F3::get('SESSION.cart_token')); 
+			//error_log(F3::get('SESSION.cart_token')); 
 		}
 		if(!empty($_POST["cart_token"])){
 			F3::set('SESSION.ship_order_token',$_POST["cart_token"]);
@@ -260,7 +260,7 @@ F3::route('POST /update',
 		if(!empty($_POST["ship_token"])){
 			F3::set('SESSION.ship_token',$_POST["ship_token"]);
 		}
-		error_log(print_r($_POST,true));
+		//error_log(print_r($_POST,true));
 		// F3::reroute('/');
 		$return_array = array(
 			"ctoken" => F3::get('SESSION.cart_token'),
