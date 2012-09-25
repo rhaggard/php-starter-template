@@ -52,7 +52,7 @@
 			  <br/>
 			 </div>
 			 <div class="span5 offset1">
-			  <legend>Shipping Capability</legend>
+			  <legend>Shipper Capability</legend>
 			  <label>Authentication Token</label>
 			  <input id="stoken" type="text" name="ship_token" placeholder="{{@SESSION.ship_token}}">
 			  
@@ -68,11 +68,13 @@
 		  </div>
 		</div>
 		<div class="modal" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			<form>
 			<div id="step1" style="">
 				<legend>1. Cart creates order</legend>
-				<h4>Schema uri</h4> <label> {{ @SESSION.cart_uri }}</label>
-				<label class="carttoken"> cart token = {{ @SESSION.cart_token }}</label>
+				<h4>Schema URI</h4> <label> {{ @SESSION.cart_uri }}</label>
+				<h4>Cart Authorization Token </h4>
+				<label class="carttoken"> {{ @SESSION.cart_token }}</label>
 			  	<h4>Message</h4>
 			  	<textarea style="width: 75%; background: #fbfbfb;" rows="10" id="ta1">
 				 {
@@ -91,8 +93,9 @@
 
 			<div id="step2" style="display:none">
 				<legend>2. Cart sends order to shipper</legend>
-				<h4>Schema uri</h4> <label> {{ @SESSION.ship_order_uri }}</label>
-				<label class="carttoken"> cart token = {{ @SESSION.ship_order_token }}</label>
+				<h4>Schema URI</h4> <label> {{ @SESSION.ship_order_uri }}</label>
+				<h4> Cart Authorization Token </h4>
+				<label class="carttoken">{{ @SESSION.ship_order_token }}</label>
 			  	<h4>Message</h4>
 			  	<textarea style="width: 75%; background: #fbfbfb;" rows="10" id="ta2">
 				 {
@@ -112,8 +115,9 @@
 
 			<div id="step3" style="display:none">
 				<legend>3. Shipper sends order succeeded and tracking number </legend>
-				<h4>Schema uri</h4> <label> {{ @SESSION.ship_uri }}</label>
-				<label class="shiptoken"> shipper token = {{ @SESSION.ship_token }}</label>
+				<h4>Schema URI</h4> <label> {{ @SESSION.ship_uri }}</label>
+				<h4> Shipper Authorization Token </h4>
+				<label class="shiptoken"> {{ @SESSION.ship_token }}</label>
 			  	<h4>Message</h4>
 			  	<textarea style="width: 100%; background: #fbfbfb;" rows="10" id="ta3">
 				 {
