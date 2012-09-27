@@ -5,26 +5,26 @@ require __DIR__.'/avro.php';
 require __DIR__.'/guid_gen.php';
 
 //F3::set('CACHE',TRUE);
-F3::set('DEBUG',0);
+F3::set('DEBUG',1);
 F3::set('UI','ui/');
 
 //set initial variables for a demo application
 //this can be done through session variables too instead of changing the global scope
 //changing the global scope is intentional for this demo app
 
-F3::set('SESSION.cart_topic',"https://api.sandbox.x.com/fabric/"."com.x.example.v1/OrderFulfillment/OrderCreated");
-F3::set('SESSION.cart_uri', "http://api.x.com/ocl/com.x.example.v1/OrderFulfillment/OrderCreated/1.2.0/");
-F3::set('SESSION.cart_ver', "1.2.0");
+F3::set('SESSION.cart_topic',"https://api.sandbox.x.com/fabric/"."com.x.example.v1/QuickStartSample/OrderCreated");
+F3::set('SESSION.cart_uri', "http://api.x.com/ocl/com.x.example.v1/QuickStartSample/OrderCreated/1.2.4/");
+F3::set('SESSION.cart_ver', "1.2.4");
 
 
-F3::set('SESSION.ship_order_topic',"https://api.sandbox.x.com/fabric/"."com.x.example.v1/OrderDropShipment/ShipOrder");
-F3::set('SESSION.ship_order_uri', "http://api.x.com/ocl/com.x.example.v1/OrderDropShipment/ShipOrder/1.2.2/");
-F3::set('SESSION.ship_order_ver', "1.2.2");
+F3::set('SESSION.ship_order_topic',"https://api.sandbox.x.com/fabric/"."com.x.example.v1/QuickStartSample/ShipOrder");
+F3::set('SESSION.ship_order_uri', "http://api.x.com/ocl/com.x.example.v1/QuickStartSample/ShipOrder/1.2.2/");
+F3::set('SESSION.ship_order_ver', "1.2.4");
 
 
-F3::set('SESSION.ship_topic',"https://api.sandbox.x.com/fabric/"."com.x.example.v1/OrderShipment/ShipOrderSucceeded");
-F3::set('SESSION.ship_uri', "http://api.x.com/ocl/com.x.example.v1/OrderShipment/ShipOrderSucceeded/1.2.0/");
-F3::set('SESSION.ship_ver', "1.2.0");
+F3::set('SESSION.ship_topic',"https://api.sandbox.x.com/fabric/"."com.x.example.v1/QuickStartSample/ShipOrderSucceeded");
+F3::set('SESSION.ship_uri', "http://api.x.com/ocl/com.x.example.v1/QuickStartSample/ShipOrderSucceeded/1.2.0/");
+F3::set('SESSION.ship_ver', "1.2.4");
 
 //common stuff
 F3::set('transaction_id', guid());
@@ -54,26 +54,26 @@ F3::route('GET /test',
 
 );
 
-F3::route('GET com.x.example.v1/OrderFulfillment/OrderCreated',
+F3::route('GET com.x.example.v1/QuickStartSample/OrderCreated',
 	//handle your business logic for order created
 	function() {
-		echo "com.x.example.v1/OrderFulfillment/OrderCreated";
+		echo "com.x.example.v1/QuickStartSample/OrderCreated";
 	}
 
 );
 
-F3::route('GET com.x.example.v1/OrderDropShipment/ShipOrder',
+F3::route('GET com.x.example.v1/QuickStartSample/ShipOrder',
 	//handle your business logic for shipOrder
 	function() {
-		echo "/com.x.example.v1/OrderDropShipment/ShipOrder";
+		echo "/com.x.example.v1/QuickStartSample/ShipOrder";
 	}
 
 );
 
-F3::route('GET com.x.example.v1/OrderShipment/ShipOrderSucceeded',
+F3::route('GET com.x.example.v1/QuickStartSample/ShipOrderSucceeded',
 	//handle your business logic for shipOrderSucceeded
 	function() {
-		echo "com.x.example.v1/OrderShipment/ShipOrderSucceeded";
+		echo "com.x.example.v1/QuickStartSample/ShipOrderSucceeded";
 	}
 
 );
@@ -145,7 +145,7 @@ F3::route('POST /shipper_order',
 		  $d = $_POST['json_message'];
 		}
 		$message = json_decode($d, true);
-		//error_log(print_r($message,true));
+		error_log(print_r($message,true));
 		//$message = array("order" => array("orderID" => "123", "orderType" => "InHouse"));
 		$datum_writer->write($message, $encoder);
 
@@ -252,7 +252,7 @@ F3::route('POST /update',
 
 		if(!empty($_POST["cart_token"])){
 			F3::set('SESSION.cart_token',$_POST["cart_token"]);
-			//error_log(F3::get('SESSION.cart_token')); 
+			error_log(F3::get('SESSION.cart_token')); 
 		}
 		if(!empty($_POST["cart_token"])){
 			F3::set('SESSION.ship_order_token',$_POST["cart_token"]);
@@ -260,7 +260,7 @@ F3::route('POST /update',
 		if(!empty($_POST["ship_token"])){
 			F3::set('SESSION.ship_token',$_POST["ship_token"]);
 		}
-		//error_log(print_r($_POST,true));
+		error_log(print_r($_POST,true));
 		// F3::reroute('/');
 		$return_array = array(
 			"ctoken" => F3::get('SESSION.cart_token'),
